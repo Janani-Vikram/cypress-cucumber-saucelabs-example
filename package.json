@@ -1,0 +1,33 @@
+{
+  "name": "cypress-typescript-saucelabs-github-integration",
+  "version": "1.0.0",
+  "description": "Example running saucectl with cypress + cucumber.",
+  "main": "index.ts",
+  "scripts": {
+    "saucectl": "npx cypress run --env file-config=production"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-amplify/auth": "^6.0.23",
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.3",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "aws-amplify": "^6.0.23",
+    "fs-extra": "^11.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "cypress": "^13.7.2",
+    "cypress-log-to-output": "^1.1.2",
+    "typescript": "^5.4.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": [
+      "cypress/e2e/*.ts"
+    ],
+    "html": {
+      "enabled": true
+    }
+  }
+}

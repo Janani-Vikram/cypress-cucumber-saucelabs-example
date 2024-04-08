@@ -1,0 +1,6 @@
+{
+  "env": {
+    "cypress_actions": "https://example.cypress.io/commands/actions",
+    "cypress_assertions": "https://example.cypress.io/commands/assertions"
+  }
+}

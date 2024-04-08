@@ -1,0 +1,7 @@
+node_modules
+.history
+reports/
+downloads/
+screenshots/
+cucumber-report.html
+package-lock.json
