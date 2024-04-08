@@ -5,11 +5,6 @@ on:
     branches:
       - main
 
-env:
-  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-  GITHUB_TOKEN: ${{ github.token }}
-
 jobs:
   cypress:
     name: Cypress with Sauce Labs
@@ -22,10 +17,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "14"
+      - name: Set up Sauce Labs credentials
+        run: |
+          sed -i "s|XXXSAUCE_USERNAMEXXX|${{secrets.SAUCE_USERNAME}}|g" ".env_cypress"
+          sed -i "s|XXXSAUCE_ACCESS_KEYXXX|${{secrets.SAUCE_ACCESS_KEY}}|g" ".env_cypress"
+          cat ".env_cypress"
       - name: Install Dependencies
         run: npm install
       - name: Cypress with Typescript
         uses: saucelabs/saucectl-run-action@v3
-      - name: Cypress Run
+      - name: Run Cypress tests
+        env:
+          SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+          SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
         run: |
-          npm run saucectl
+          npm run cy:run -- --env sauceUsername=$SAUCE_USERNAME --env sauceAccessKey=$SAUCE_ACCESS_KEY
