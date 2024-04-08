@@ -17,10 +17,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "14"
-      - name: Set up Sauce Labs credentials
-        run: echo "export SAUCE_USERNAME=${{ secrets.SAUCE_USERNAME }}" >> $GITHUB_ENV && echo "export SAUCE_ACCESS_KEY=${{ secrets.SAUCE_ACCESS_KEY }}" >> $GITHUB_ENV
       - name: Install Dependencies
         run: npm install
+      - name: Configure SauceCTL
+        run: saucectl configure
       - name: Cypress with Typescript
         uses: saucelabs/saucectl-run-action@v3
       - name: Set up Sauce Labs credentials
@@ -29,6 +29,9 @@ jobs:
           SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
         run: echo "export SAUCE_USERNAME=${{ secrets.SAUCE_USERNAME }}" >> $GITHUB_ENV && echo "export SAUCE_ACCESS_KEY=${{ secrets.SAUCE_ACCESS_KEY }}" >> $GITHUB_ENV
 
-      - name: Run Cypress tests with Sauce Labs
-        run: |
-          npx cypress run --record --key $SAUCE_ACCESS_KEY --env sauceUsername=$SAUCE_USERNAME
+      - name: Run SauceCTL
+        run: saucectl run
+        env:
+          SAUCECTL_LOG_LEVEL: debug
+          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
