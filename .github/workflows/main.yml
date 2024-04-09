@@ -13,15 +13,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: "14"
+
       - name: Install Dependencies
         run: npm install
 
       - name: Cypress with Typescript
         uses: saucelabs/saucectl-run-action@v3
+
       - name: Set up Sauce Labs credentials
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
@@ -30,10 +33,6 @@ jobs:
 
       - name: Configure SauceCTL
         run: saucectl configure
-        
+
       - name: Run SauceCTL
         run: saucectl run
-        env:
-          SAUCECTL_LOG_LEVEL: debug
-          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
-          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
