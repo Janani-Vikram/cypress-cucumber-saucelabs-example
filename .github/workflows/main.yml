@@ -30,6 +30,8 @@ jobs:
 
       - name: Cypress with Typescript
         uses: saucelabs/saucectl-run-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure SauceCTL
         run: saucectl configure
