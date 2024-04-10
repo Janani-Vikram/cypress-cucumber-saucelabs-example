@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "cypress": "^13.7.2",
+    "saucectl": "0.175.0",
     "cypress-log-to-output": "^1.1.2",
     "typescript": "^5.4.4"
   },
