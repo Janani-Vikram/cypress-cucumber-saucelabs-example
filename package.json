@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "cypress-run": "npx cypress run --env file-config=production",
-    "saucectl-run": "SAUCE_USERNAME=\"$(grep '^SAUCE_USERNAME=' .env_cypress | cut -d= -f2)\" SAUCE_ACCESS_KEY=\"$(grep '^SAUCE_ACCESS_KEY=' .env_cypress | cut -d= -f2)\" saucectl run --env file-config=production --parallel --group sauce-group"
+    "saucectl-run": "SAUCE_USERNAME=\"$(grep '^SAUCE_USERNAME=' .env_cypress | cut -d= -f2)\" SAUCE_ACCESS_KEY=\"$(grep '^SAUCE_ACCESS_KEY=' .env_cypress | cut -d= -f2)\" saucectl run --env file-config=production"
   },
   "author": "",
   "license": "ISC",
