@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: cypress
+defaults: {}
+showConsoleLog: false
+
+sauce:
+  region: eu-central-1
+  concurrency: 1
+  sauceignore: .sauceignore
+
+cypress:
+  configFile: cypress.config.ts
+  version: 13.6.6
+  record: false
+  key: ""
+  reporters: []
+
+suites:
+  - name: cypress - macOS 12 - chrome
+    browser: chrome
+    platformName: macOS 12
+    config:
+      specPattern: ["cypress/e2e/*.feature"]
+
+rootDir: .
+artifacts:
+  download:
+    match:
+      - "*"
+    when: always
+    directory: ./artifacts
+npm:
+  dependencies:
+    - typescript
+  packages:
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.3"
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0"
+    "cypress-log-to-output": "^1.1.2"

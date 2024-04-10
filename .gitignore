@@ -5,3 +5,5 @@ downloads/
 screenshots/
 cucumber-report.html
 package-lock.json
+artifacts
+.DS_Store
