@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+  SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+  SAUCECTL_VERSION: "0.175.0"
+  BUILD_PREFIX: true
+
 jobs:
   cypress:
     name: Cypress with Sauce Labs
@@ -19,22 +25,8 @@ jobs:
         with:
           node-version: "14"
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Install SauceCTL
-        run: npm install -g saucectl
-
-      - name: Set up environment variables
+      - name: Run Build
         env:
-          SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
-          SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+          CI: false
         run: |
-          echo "export SAUCE_USERNAME=${{ secrets.SAUCE_USERNAME }}" >> $GITHUB_ENV
-          echo "export SAUCE_ACCESS_KEY=${{ secrets.SAUCE_ACCESS_KEY }}" >> $GITHUB_ENV
-
-      - name: Configure Sauce Labs
-        run: saucectl configure
-
-      - name: Execute SauceCTL Tests
-        run: saucectl run
+          npm run build
