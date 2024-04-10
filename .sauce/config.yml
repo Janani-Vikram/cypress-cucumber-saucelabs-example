@@ -5,7 +5,7 @@ showConsoleLog: false
 
 sauce:
   region: eu-central-1
-  concurrency: 1
+  concurrency: 3
   sauceignore: .sauceignore
 
 cypress:
