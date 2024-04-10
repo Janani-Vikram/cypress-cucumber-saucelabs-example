@@ -25,6 +25,12 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Set saucectl Env variables from github secrets
+        run: |
+          sed -i "s|XXXSAUCE_USERNAMEXXX|${{secrets.SAUCE_USERNAME}}|g" ".env_cypress"
+          sed -i "s|XXXSAUCE_ACCESS_KEYXXX|${{secrets.SAUCE_ACCESS_KEY}}|g" ".env_cypress"
+          cat ".env_cypress"
+
       - name: Install Dependencies
         run: npm install
 
