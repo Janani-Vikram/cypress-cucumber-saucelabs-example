@@ -17,6 +17,7 @@ cypress:
 suites:
   - name: cypress - macOS 12 - chrome
     browser: chrome
+    runMode: parallel
     concurrency: 4
     files:
       - cypress/e2e/**/*.feature
