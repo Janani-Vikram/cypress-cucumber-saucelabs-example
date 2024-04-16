@@ -26,7 +26,7 @@
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": [
-      "cypress/e2e/*.ts"
+      "cypress/e2e/**/*.ts"
     ],
     "html": {
       "enabled": true

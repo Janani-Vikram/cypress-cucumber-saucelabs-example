@@ -5,7 +5,6 @@ showConsoleLog: false
 
 sauce:
   region: eu-central-1
-  concurrency: 3
   sauceignore: .sauceignore
 
 cypress:
@@ -18,9 +17,12 @@ cypress:
 suites:
   - name: cypress - macOS 12 - chrome
     browser: chrome
+    concurrency: 4
+    files:
+      - cypress/e2e/**/*.feature
     platformName: macOS 12
     config:
-      specPattern: ["cypress/e2e/*.feature"]
+      specPattern: ["cypress/e2e/**/*.feature"]
 
 rootDir: .
 artifacts:

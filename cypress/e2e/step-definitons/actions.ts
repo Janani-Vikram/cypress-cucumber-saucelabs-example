@@ -1,6 +1,6 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import ActionPage from "./page-objects/ActionPage";
-import data from '../fixtures/data.json';
+import ActionPage from "../page-objects/ActionPage";
+import data from '../../fixtures/data.json';
 
 const actionPage = new ActionPage();
 const env = Cypress.env()
