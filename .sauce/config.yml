@@ -6,6 +6,7 @@ showConsoleLog: false
 sauce:
   region: eu-central-1
   sauceignore: .sauceignore
+  parallel: true
 
 cypress:
   configFile: cypress.config.ts
@@ -17,8 +18,6 @@ cypress:
 suites:
   - name: cypress - macOS 12 - chrome
     browser: chrome
-    runMode: parallel
-    concurrency: 4
     files:
       - cypress/e2e/**/*.feature
     platformName: macOS 12
